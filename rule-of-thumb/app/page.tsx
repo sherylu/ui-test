@@ -3,8 +3,12 @@ import Hero from "./components/header/Hero";
 import BeCountedBanner from "./components/banner/BeCountedBanner";
 import SubmitBanner from "./components/banner/SubmitBanner";
 import Footer from "./components/footer/Footer";
+import Rulings from "./components/rulings/Rulings";
+import { getAllRulings } from "@/lib/rulings";
 
-export default function Home() {
+export default async function Home() {
+  const {rulings} = await getAllRulings()
+
   return (
     <>
       <Navigation />
@@ -12,9 +16,7 @@ export default function Home() {
       <div className="max-centered">
         <BeCountedBanner />
         <main role="main">
-          {/* Start: Implementation */}
-          👉 Your code goes here 👈
-          {/* End: Implementation */}
+          <Rulings rulings={rulings} />
         </main>
       <SubmitBanner />
       <Footer />
