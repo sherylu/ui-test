@@ -4,7 +4,7 @@ import BeCountedBanner from "./components/banner/BeCountedBanner";
 import SubmitBanner from "./components/banner/SubmitBanner";
 import Footer from "./components/footer/Footer";
 import Rulings from "./components/rulings/Rulings";
-import { getAllRulings } from "@/lib/rulings";
+import { getAllRulings, voteRuling } from "@/lib/rulings";
 
 export default async function Home() {
   const {rulings} = await getAllRulings()
@@ -16,7 +16,7 @@ export default async function Home() {
       <div className="max-centered">
         <BeCountedBanner />
         <main role="main">
-          <Rulings rulings={rulings} />
+          <Rulings rulings={rulings} voteRuling={voteRuling} />
         </main>
       <SubmitBanner />
       <Footer />

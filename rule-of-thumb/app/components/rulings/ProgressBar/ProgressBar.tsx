@@ -7,20 +7,22 @@ type ProgressBarProps = {
     positive: number;
     negative: number;
   };
+  classprefix?: string;
 };
 
-const ProgressBar: React.FC<ProgressBarProps> = ({ votes }) => {
+const ProgressBar: React.FC<ProgressBarProps> = ({ votes, classprefix="" }) => {
   const { positive, negative } = votes;
   const totalVotes = positive + negative;
   const positivePercentage = totalVotes === 0 ? 0 : (positive / totalVotes) * 100;
   const negativePercentage = totalVotes === 0 ? 0 : (negative / totalVotes) * 100;
+  const iconSize = classprefix ? 15 : 25;
   
   return (
-    <div className="progress-bar">
+    <div className={`${classprefix}progress-bar`}>
       <div className="progress" style={{ width: `${positivePercentage}%` }}>
         <div className="progress-bar-start">
           <span className="progress-icon">
-            <ThumbsUpIcon ariaLabel="positive progress thumbs up" />
+            <ThumbsUpIcon ariaLabel="positive progress thumbs up" size={iconSize} />
           </span>
           <span className="progress-number">
             {positivePercentage.toFixed(2)}%
@@ -36,7 +38,7 @@ const ProgressBar: React.FC<ProgressBarProps> = ({ votes }) => {
             {negativePercentage.toFixed(2)}%
           </span>
           <span className="progress-icon">
-            <ThumbsDownIcon ariaLabel="negative progress thumbs down" />
+            <ThumbsDownIcon ariaLabel="negative progress thumbs down" size={iconSize} />
           </span>
         </div>
       </div>
