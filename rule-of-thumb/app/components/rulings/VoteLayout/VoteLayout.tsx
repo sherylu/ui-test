@@ -3,14 +3,25 @@ import ThumbsUpIcon from "../../icons/ThumbsUpIcon";
 import ThumbsDownIcon from "../../icons/ThumbsDownIcon";
 
 type Props = {
+  name: string;
   alreadyVoted: boolean;
   setAlreadyVoted: (value: boolean) => void;
+  voteRuling: (name: string, vote: "up" | "down") => Promise<any>;
+  classPrefix?: string;
 };
 
-const VoteLayout: React.FC<Props> = ({ alreadyVoted, setAlreadyVoted }) => {
-  const [vote, setVote] = useState<string | null>(null);
+const VoteLayout: React.FC<Props> = ({
+  name,
+  alreadyVoted,
+  setAlreadyVoted,
+  voteRuling,
+  classPrefix="",
+}) => {
+  const [vote, setVote] = useState<"up" | "down" | null>(null);
 
-  const handleVote = (value: string) => {
+  const iconSize = classPrefix ? 16 : 25;
+
+  const handleVote = (value: "up" | "down") => {
     setVote(value);
   };
 
@@ -18,7 +29,15 @@ const VoteLayout: React.FC<Props> = ({ alreadyVoted, setAlreadyVoted }) => {
     // Send `vote` to the API for voting.
     // This is a placeholder and should be replaced with your actual API call.
     setAlreadyVoted(!alreadyVoted);
-    console.log(`Sending vote: ${vote}`);
+
+    if (!vote) return;
+    voteRuling(name, vote)
+      .then((response: any) => {
+        console.log(response);
+      })
+      .catch((error: Error) => {
+        console.log(error);
+      });
     setVote(null);
   };
 
@@ -28,14 +47,19 @@ const VoteLayout: React.FC<Props> = ({ alreadyVoted, setAlreadyVoted }) => {
         <></>
       ) : (
         <>
-          <button className="thumbs thumbs-up" onClick={() => handleVote("up")}>
-            <ThumbsUpIcon ariaLabel="vote thumbs up" />
+          <button
+            className={`${classPrefix}thumbs thumbs-up ${vote === "up" ? "selected" : ""}`}
+            onClick={() => handleVote("up")}
+          >
+            <ThumbsUpIcon ariaLabel="vote thumbs up" size={iconSize} />
           </button>
           <button
-            className="thumbs thumbs-down"
+            className={`${classPrefix}thumbs thumbs-down ${
+              vote === "down" ? "selected" : ""
+            }`}
             onClick={() => handleVote("down")}
           >
-            <ThumbsDownIcon ariaLabel="vote thumbs down" />
+            <ThumbsDownIcon ariaLabel="vote thumbs down" size={iconSize} />
           </button>
         </>
       )}
