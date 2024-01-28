@@ -1,14 +1,17 @@
 import React from "react";
 
-const ThumbsDownIcon: React.FC<{ariaLabel?: string}> = ({ariaLabel='thumbs down'}) => {
+const ThumbsDownIcon: React.FC<{ ariaLabel?: string; size?: number }> = ({
+  ariaLabel = "thumbs down",
+  size = 25,
+}) => {
   return (
     <svg
       xmlns="http://www.w3.org/2000/svg"
-      width="25"
-      height="25"
+      width={size}
+      height={size}
       viewBox="0 0 25 25"
       fill="none"
-      role="img" 
+      role="img"
       aria-label={ariaLabel}
     >
       <path
