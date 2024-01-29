@@ -20,18 +20,19 @@ type Props = {
   voteRuling: (name: string, vote: "up" | "down") => Promise<any>;
 };
 
-const Rulings: React.FC<Props> = ({ rulings, voteRuling }) => {
-  const [selectedViewType, setSelectedViewType] = useState<string>("List");
+const GridContainer: React.FC<{ children: React.ReactNode, selectedViewType: "List"| "Grid"}> = ({
+  children,
+  selectedViewType
+}) => {
+  return selectedViewType === "Grid" ? (
+    <div className="grid-container">{children}</div>
+  ) : (
+    <>{children}</>
+  );
+};
 
-  const GridContainer: React.FC<{ children: React.ReactNode }> = ({
-    children,
-  }) => {
-    return selectedViewType === "Grid" ? (
-      <div className="grid-container">{children}</div>
-    ) : (
-      <>{children}</>
-    );
-  };
+const Rulings: React.FC<Props> = ({ rulings, voteRuling }) => {
+  const [selectedViewType, setSelectedViewType] = useState<"List"| "Grid" >("List");
 
   return (
     <>
@@ -43,7 +44,7 @@ const Rulings: React.FC<Props> = ({ rulings, voteRuling }) => {
         />
       </div>
       <div>
-        <GridContainer>
+        <GridContainer selectedViewType={selectedViewType}>
           {rulings.map((ruling, index) => (
             <RulingLayout
               ruling={ruling}

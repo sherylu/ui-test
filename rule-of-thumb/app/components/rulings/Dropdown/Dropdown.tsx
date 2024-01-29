@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 type Props = {
   selectedValue: string;
-  setSelectedValue: (value: string) => void;
+  setSelectedValue: (value: "List"| "Grid") => void;
 };
 
 const Dropdown: React.FC<Props> = ({ selectedValue, setSelectedValue }) => {
