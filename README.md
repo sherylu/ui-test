@@ -1,14 +1,19 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). 
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+
+## Prerequisites
+
+To run the app you will need node 18, you can use nvm, just run `nvm install` 
 
 ## Database
 This is intended for development only, for production we should switch to another database engine.
 
 In order to set up the initial data for the application you will need to make a couple of things:
 
-- touch prisma/dev.db
-
-- npx prisma db push
-- npx prisma db seed
+```bash
+touch prisma/dev.db
+npx prisma db push
+npx prisma db seed
+```
 
 ## Getting Started
 
