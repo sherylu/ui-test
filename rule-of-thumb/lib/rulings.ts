@@ -17,14 +17,14 @@ export async function getAllRulings() {
   return data.json()
 }
 
-export async function voteRuling(name: string, vote: 'up' | 'down') {
+export async function voteRuling(id: number, vote: 'up' | 'down') {
   "use server";
     const data = await fetch(`${endpoint}/rulings`, {
         method: 'POST',
         headers: {
         'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ name, vote }),
+        body: JSON.stringify({ id, vote }),
     })
     
     if (!data.ok) {

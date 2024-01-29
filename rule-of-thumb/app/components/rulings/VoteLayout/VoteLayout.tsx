@@ -8,6 +8,7 @@ type Props = {
   setAlreadyVoted: (value: boolean) => void;
   voteRuling: (name: string, vote: "up" | "down") => Promise<any>;
   classPrefix?: string;
+  rulingId?: number;
 };
 
 const VoteLayout: React.FC<Props> = ({
@@ -16,6 +17,7 @@ const VoteLayout: React.FC<Props> = ({
   setAlreadyVoted,
   voteRuling,
   classPrefix="",
+  rulingId,
 }) => {
   const [vote, setVote] = useState<"up" | "down" | null>(null);
 
@@ -31,7 +33,7 @@ const VoteLayout: React.FC<Props> = ({
     setAlreadyVoted(!alreadyVoted);
 
     if (!vote) return;
-    voteRuling(name, vote)
+    voteRuling(rulingId, vote)
       .then((response: any) => {
         console.log(response);
       })

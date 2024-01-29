@@ -8,6 +8,7 @@ const GridLayout: React.FC<LayoutProps> = ({
   iconColorClass,
   iconAriaLabel,
   name,
+  rulingId,
   description,
   alreadyVoted,
   formattedDate,
@@ -44,6 +45,7 @@ const GridLayout: React.FC<LayoutProps> = ({
               setAlreadyVoted={setAlreadyVoted}
               voteRuling={voteRuling}
               classPrefix="grid-"
+              rulingId={rulingId}
             />
           </div>
           <ProgressBar votes={votes} classprefix="grid-" />

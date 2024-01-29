@@ -14,6 +14,7 @@ const ListLayout: React.FC<LayoutProps> = ({
   setAlreadyVoted,
   voteRuling,
   votes,
+  rulingId,
   Icon,
 }) => {
   return (
@@ -43,6 +44,7 @@ const ListLayout: React.FC<LayoutProps> = ({
                   alreadyVoted={alreadyVoted}
                   setAlreadyVoted={setAlreadyVoted}
                   voteRuling={voteRuling}
+                  rulingId={rulingId}
                 />
               </div>
             </div>

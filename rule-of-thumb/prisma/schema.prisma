@@ -1,0 +1,29 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Ruling {
+  id          Int      @id @default(autoincrement())
+  name        String
+  description String
+  category    String
+  picture     String
+  lastUpdated DateTime @default(now())
+  votes       Vote?
+}
+
+model Vote {
+  id       Int     @id @default(autoincrement())
+  positive Int
+  negative Int
+  ruling   Ruling @relation(fields: [rulingId], references: [id])
+  rulingId Int    @unique
+}

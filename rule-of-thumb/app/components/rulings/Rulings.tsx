@@ -4,6 +4,7 @@ import { RulingLayout } from "./RulingLayout/RulingLayout";
 import Dropdown from "./Dropdown/Dropdown";
 
 export type Ruling = {
+  id: number;
   name: string;
   description: string;
   category: string;

@@ -4,6 +4,7 @@ export type LayoutProps = {
     iconAriaLabel: string;
     name: string;
     description: string;
+    rulingId: number;
     alreadyVoted: boolean;
     formattedDate: string;
     setAlreadyVoted: React.Dispatch<React.SetStateAction<boolean>>;
