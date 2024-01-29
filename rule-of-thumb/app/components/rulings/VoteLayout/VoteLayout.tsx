@@ -1,14 +1,15 @@
 import React, { useState } from "react";
 import ThumbsUpIcon from "../../icons/ThumbsUpIcon";
 import ThumbsDownIcon from "../../icons/ThumbsDownIcon";
+import { VoteFunction, VoteType } from "@/app/types/SharedProps";
 
 type Props = {
   name: string;
   alreadyVoted: boolean;
   setAlreadyVoted: (value: boolean) => void;
-  voteRuling: (name: string, vote: "up" | "down") => Promise<any>;
+  voteRuling: VoteFunction;
   classPrefix?: string;
-  rulingId?: number;
+  rulingId: number;
 };
 
 const VoteLayout: React.FC<Props> = ({
@@ -19,17 +20,15 @@ const VoteLayout: React.FC<Props> = ({
   classPrefix="",
   rulingId,
 }) => {
-  const [vote, setVote] = useState<"up" | "down" | null>(null);
+  const [vote, setVote] = useState<VoteType | null>(null);
 
   const iconSize = classPrefix ? 16 : 25;
 
-  const handleVote = (value: "up" | "down") => {
+  const handleVote = (value: VoteType) => {
     setVote(value);
   };
 
   const handleVoteNow = () => {
-    // Send `vote` to the API for voting.
-    // This is a placeholder and should be replaced with your actual API call.
     setAlreadyVoted(!alreadyVoted);
 
     if (!vote) return;

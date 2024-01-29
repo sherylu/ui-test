@@ -1,3 +1,5 @@
+export type VoteFunction = (id: number, vote: VoteType) => Promise<any>
+
 export type LayoutProps = {
     imageUrl: string;
     iconColorClass: string;
@@ -8,10 +10,14 @@ export type LayoutProps = {
     alreadyVoted: boolean;
     formattedDate: string;
     setAlreadyVoted: React.Dispatch<React.SetStateAction<boolean>>;
-    voteRuling: (name: string, vote: "up" | "down") => Promise<any>;
+    voteRuling: VoteFunction;
     votes: {
       positive: number;
       negative: number;
     };
     Icon: React.FC<{ ariaLabel?: string; size?: number }>;
   }
+
+  export type ScreenSizes = "lg" | "md" | "sm"
+
+  export type VoteType = "up" | "down"

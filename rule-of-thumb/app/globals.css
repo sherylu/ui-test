@@ -617,7 +617,7 @@ main h3 {
   flex-shrink: 0;
 }
 
-.selected {
+button.selected {
   border: 2px solid rgba(255, 255, 255, 1);
 }
 
@@ -667,7 +667,7 @@ button.thumbs-down:hover {
   top: 5px;
   display: flex;
   align-items: center;
-  color: #fff; /* adjust as needed */
+  color: #fff;
 }
 
 .progress-bar-start {
@@ -821,6 +821,54 @@ button.thumbs-down:hover {
   font-weight: 400;
   line-height: 22px;
   letter-spacing: 0px;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+  color: var(--color-white);
+  font-family: "Lato", sans-serif;
+}
+
+.carousel::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel-item {
+  flex: 0 0 auto;
+  margin-right: 10px;
+  width: 350px;
+}
+
+@media all and (max-width: 767px) {
+  .dropdown {
+    display: none;
+  }
+
+  .grid-card-name {
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 36px;
+    letter-spacing: 0px;
+  }
+
+  main h3 {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 29px;
+    letter-spacing: 0px;
+  }
+}
+
+@media all and (max-width: 992){
+  main h3 {
+    font-size: 24px;
+    font-weight: 300;
+    line-height: 29px;
+    letter-spacing: 0px;
+  }
 }
 
 @media all and (min-width: 500px) {

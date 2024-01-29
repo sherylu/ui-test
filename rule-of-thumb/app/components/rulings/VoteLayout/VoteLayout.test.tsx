@@ -13,6 +13,7 @@ describe("VoteLayout", () => {
   it("should render the VoteLayout component", () => {
     render(
       <VoteLayout
+        rulingId={123}
         name="example"
         alreadyVoted={false}
         setAlreadyVoted={() => {}}
@@ -36,6 +37,7 @@ describe("VoteLayout", () => {
     const setAlreadyVoted = jest.fn();
     render(
       <VoteLayout
+        rulingId={123}
         name="example"
         alreadyVoted={false}
         setAlreadyVoted={setAlreadyVoted}
@@ -51,13 +53,14 @@ describe("VoteLayout", () => {
     await userEvent.click(voteNowButton);
 
     expect(setAlreadyVoted).toHaveBeenCalledWith(true);
-    expect(mockVoteRuling).toHaveBeenCalledWith("example", "up");
+    expect(mockVoteRuling).toHaveBeenCalledWith(123, "up");
   });
 
   it("should handle vote down", async () => {
     const setAlreadyVoted = jest.fn();
     render(
       <VoteLayout
+        rulingId={123}
         name="example"
         alreadyVoted={false}
         setAlreadyVoted={setAlreadyVoted}
@@ -73,13 +76,14 @@ describe("VoteLayout", () => {
     await userEvent.click(voteNowButton);
 
     expect(setAlreadyVoted).toHaveBeenCalledWith(true);
-    expect(mockVoteRuling).toHaveBeenCalledWith("example", "down");
+    expect(mockVoteRuling).toHaveBeenCalledWith(123, "down");
   });
 
   it("should handle voting again", async () => {
     const setAlreadyVoted = jest.fn();
     render(
       <VoteLayout
+        rulingId={123} 
         name="example"
         alreadyVoted={true}
         setAlreadyVoted={setAlreadyVoted}
