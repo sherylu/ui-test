@@ -15,6 +15,7 @@ In order to set up the initial data for the application you will need to make a 
 First, run the development server:
 
 ```bash
+npm i
 npm run dev
 # or
 yarn dev
@@ -25,7 +26,3 @@ bun dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
